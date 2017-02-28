@@ -1,1 +1,0 @@
-# nwmh-wizard
