@@ -1,6 +1,7 @@
 import Route from "./Route";
 import {Postcodes} from "../config/Postcodes";
 import {Decisions} from "../config/Decisions";
+import {Externals} from "../config/Externals";
 
 export default class App {
 	/**
@@ -11,6 +12,7 @@ export default class App {
 		this.routes 		= new Route;
 		this.postcodes 		= Postcodes;
 		this.decisions 		= Decisions;
+		this.externals 		= Externals;
 		this.selectedAge 	= null;
 		this.pages 			= [];
 	}
@@ -24,6 +26,7 @@ export default class App {
 		this._setBacks();
 		this._setAgeSelect();
 		this._setPostcodeEntry();
+		this._setExternalLinks();
 
 		this.pages.push("index");
 	}
@@ -128,7 +131,19 @@ export default class App {
 	_setAge(age) {
 		this.selectedAge = age;
 
-		this.next("postcode");
+		if(this._isMinor(age)) {
+			return this.next("minors");			
+		}
+
+		return this.next("postcode");
+	}
+
+	/**
+	 * has the user selected an age which indicates they are a minor
+	 *
+	 */
+	_isMinor(age) {
+		return age === "under_15";
 	}
 
 	/**
@@ -181,5 +196,29 @@ export default class App {
         });
     	
         this.next(decisions);
+    }
+
+    /**
+     * set the actions for each of the external links
+     * 
+     */
+    _setExternalLinks() {
+    	document.querySelector(".external").addEventListener("click", (e) => {
+			e.preventDefault();
+
+			this._goExternal(e.target.dataset.route);				
+		});    	
+    }
+
+    /**
+     * execute an external link
+     * 
+     */
+    _goExternal(target) {
+    	for(let route in this.externals) {
+    		if(route === target) {
+    			window.location = this.externals[route];
+    		}
+    	}
     }
 }

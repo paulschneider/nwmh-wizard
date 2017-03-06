@@ -1,3 +1,5 @@
+var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
+
 module.exports = {
     // where is the entry point to our app
 	entry: './src/app.js',
@@ -22,5 +24,12 @@ module.exports = {
      // show colours in the console output
     stats: {
         colors: true
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ]
 }
