@@ -1,2 +1,7 @@
 import App from "./classes/App";
-new App().init();
+
+window.NWMH_Wizard = function() {
+	let Wizard = new App;
+
+	Wizard.init();
+}
