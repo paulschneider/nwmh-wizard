@@ -203,11 +203,15 @@ export default class App {
      * 
      */
     _setExternalLinks() {
-    	document.querySelector(".external").addEventListener("click", (e) => {
-			e.preventDefault();
+    	let links = document.getElementsByClassName("external");
 
-			this._goExternal(e.target.dataset.route);				
-		});    	
+    	Array.from(links).forEach((link) => {
+	    	link.addEventListener("click", (e) => {
+				e.preventDefault();
+
+				this._goExternal(e.target.dataset.route);				
+			});    	
+    	});		    	
     }
 
     /**
