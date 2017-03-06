@@ -1,18 +1,17 @@
 import Route from "./Route";
-import {Postcodes} from "../config/Postcodes";
 import {Decisions} from "../config/Decisions";
-import {Externals} from "../config/Externals";
 
 export default class App {
 	/**
 	 * class constructor
 	 * 
 	 */
-	constructor() {
+	constructor(postcodes, externalPaths) {
+
 		this.routes 		= new Route;
-		this.postcodes 		= Postcodes;
+		this.postcodes 		= postcodes;
 		this.decisions 		= Decisions;
-		this.externals 		= Externals;
+		this.externals 		= externalPaths;
 		this.selectedAge 	= null;
 		this.pages 			= [];
 	}

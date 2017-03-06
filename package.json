@@ -1,7 +1,7 @@
 {
   "name": "NWMH Wizard",
   "description": "This is the NWMH help wizard package",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/paulschneider/nwmh-wizard.git"

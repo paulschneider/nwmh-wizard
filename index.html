@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Get some help!</title>
-	<link rel="stylesheet" href="version-2/dist/css/content.css" />
+	<link rel="stylesheet" href="dist/css/content.css" />
 </head>
 <body>
 	<div class="content">
@@ -198,8 +198,40 @@
 	    </section>
 	</div>
 </body>
-	<script type='text/javascript' src="version-2/dist/app.bundle.js"></script>
+	<script type='text/javascript' src="dist/app.bundle.js"></script>
 	<script type='text/javascript'>
-		new NWMH_Wizard();
+		new NWMH_Wizard({
+			postcodes: {
+				under_24: [	
+					3002,
+					8002, 
+					3000, 
+					3004, 
+					3001,
+					8001,
+					3045, 
+					3052, 
+					5005
+				],
+				over_24: [
+					5006,
+					3051,
+					3207,
+					3050 ,
+					3205,
+					3004,
+					3001,
+					3003
+				]
+			},
+			externals: {
+				"young": "/home",
+				"adult": "/home",
+				"senior": "/home",
+				"what-to-expect": "/home",
+				"speciality-services": "/home",
+				"support-for-families": "/home",
+			}
+		});		
 	</script>
 </html>
