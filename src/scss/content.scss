@@ -1,0 +1,13 @@
+section {
+    width: 650px;
+    height: 650px;
+    border: 1px solid red;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
