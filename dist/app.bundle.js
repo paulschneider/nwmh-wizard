@@ -74,7 +74,7 @@
 
 	var _Route2 = _interopRequireDefault(_Route);
 
-	var _Decisions = __webpack_require__(5);
+	var _Decisions = __webpack_require__(4);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -201,7 +201,7 @@
 			value: function _setNav() {
 				var _this2 = this;
 
-				var navs = document.getElementsByClassName("nav");
+				var navs = document.getElementsByClassName("wizard-nav");
 
 				for (var i = 0; i < navs.length; i++) {
 					navs[i].addEventListener("click", function (e) {
@@ -443,8 +443,7 @@
 	});
 
 /***/ },
-/* 4 */,
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 	'use strict';
