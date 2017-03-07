@@ -95,7 +95,7 @@ export default class App {
 	 * 
 	 */
 	_setNav() {
-		let navs = document.getElementsByClassName("nav");
+		let navs = document.getElementsByClassName("wizard-nav");
 
 		for(let i = 0; i < navs.length; i++) {
 			navs[i].addEventListener("click", (e) => {
