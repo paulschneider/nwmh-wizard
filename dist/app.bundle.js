@@ -308,6 +308,8 @@
 			value: function _makeDetermination(postcode) {
 				var postcodes = this.postcodes[this.selectedAge];
 
+				console.log(this.postcodes, postcodes, this.selectedAge);
+
 				return postcodes.includes(parseInt(postcode)) ? "included" : "excluded";
 			}
 
