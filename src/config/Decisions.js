@@ -1,17 +1,20 @@
 export const Decisions = Object.freeze({
 	age: {
-		under_15: 'minors',
-		under_24: 'postcode-entry',
-		over_24: 'postcode-entry'
+		minors: 'minors',
+		youth: 'postcode-entry',
+		adult: 'postcode-entry',
+		senior: 'postcode-entry'
 	},
 	postcode: {
 		included: {
-			under_24: 'youth',
-			over_24: 'adult'
-		}, 
+			youth: 'youth',
+			adult: 'adult',
+			senior: 'senior'
+		},
 		excluded: {
-			under_24: 'similar-youth-organisations',
-			over_24: 'similar-adult-organisations',
+			youth: 'alt-youth',
+			adult: 'alt-adult',
+			senior: 'alt-senior'
 		}
 	}
 });
