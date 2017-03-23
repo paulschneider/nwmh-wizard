@@ -4,7 +4,7 @@ import {Decisions} from "../config/Decisions";
 export default class App {
 	/**
 	 * class constructor
-	 * 
+	 *
 	 */
 	constructor(postcodes, externalPaths) {
 
@@ -18,9 +18,9 @@ export default class App {
 
 	/**
 	 * initialise the app
-	 * 
+	 *
 	 */
-	init() {		
+	init() {
 		this._setNav();
 		this._setBacks();
 		this._setAgeSelect();
@@ -32,7 +32,7 @@ export default class App {
 
 	/**
 	 * navigate to the next page
-	 *	 
+	 *
 	 */
 	next(path) {
 		let route = this.routes.get(path);
@@ -44,12 +44,12 @@ export default class App {
 	}
 	/**
 	 * navigate to the previous page
-	 *	 
+	 *
 	 */
 	previous(e) {
 		e.preventDefault();
-	
-		this.pages.pop();		
+
+		this.pages.pop();
 		let previousPage = this.pages.slice(-1);
 
 		this._hideAll();
@@ -58,7 +58,7 @@ export default class App {
 
 	/**
 	 * display the page
-	 *	 
+	 *
 	 */
 	_show(section) {
 		document.querySelector("#" + section).classList.add("active");
@@ -70,19 +70,19 @@ export default class App {
 	 */
 	_hideAll() {
 		let removable = document.getElementsByClassName("page");
-		
-		for(let i=0; i < removable.length; i++) {			
+
+		for(let i=0; i < removable.length; i++) {
 			removable[i].classList.remove("active");
-		}	
+		}
 	}
 
 	/**
 	 * initialise all of the back buttons on the app
-	 * 
+	 *
 	 */
 	_setBacks() {
 		let backs = document.getElementsByClassName("back-btn");
-		
+
 		for(let i = 0; i < backs.length; i++) {
 			backs[i].addEventListener("click", (e) => {
 				this.previous(e);
@@ -92,7 +92,7 @@ export default class App {
 
 	/**
 	 * set the event listeners for the navigation links buttons
-	 * 
+	 *
 	 */
 	_setNav() {
 		let navs = document.getElementsByClassName("wizard-nav");
@@ -101,7 +101,7 @@ export default class App {
 			navs[i].addEventListener("click", (e) => {
 				e.preventDefault();
 				var path = e.target.hash.substr(1);
-				
+
 				this.next(path);
 			});
 		};
@@ -109,7 +109,7 @@ export default class App {
 
 	/**
 	 * set the event listeners for the age selection buttons
-	 * 
+	 *
 	 */
 	_setAgeSelect() {
 		let buttons = document.getElementsByClassName("age-select");
@@ -125,13 +125,13 @@ export default class App {
 
 	/**
 	 * set the age value against the class
-	 * 
+	 *
 	 */
 	_setAge(age) {
 		this.selectedAge = age;
 
 		if(this._isMinor(age)) {
-			return this.next("minors");			
+			return this.next("minors");
 		}
 
 		return this.next("postcode");
@@ -142,24 +142,24 @@ export default class App {
 	 *
 	 */
 	_isMinor(age) {
-		return age === "under_15";
+		return age === "minors";
 	}
 
 	/**
 	 * add the event listener to the postcode button
-	 * 
+	 *
 	 */
 	_setPostcodeEntry() {
 		document.querySelector(".postcode-btn").addEventListener("click", (e) => {
 			e.preventDefault();
 
-			this._postcodeAdded();				
+			this._postcodeAdded();
 		});
 	}
 
 	/**
 	 * the user added a postcode
-	 * 
+	 *
 	 */
 	_postcodeAdded() {
 		let postcode = document.getElementById("postcode-field").value;
@@ -175,7 +175,7 @@ export default class App {
 
 	/**
 	 * make a postcode determination
-	 * 
+	 *
 	 */
 	_makeDetermination(postcode) {
 		let postcodes = this.postcodes[this.selectedAge];
@@ -189,39 +189,39 @@ export default class App {
      */
     _makeDecision(...keys) {
         let decisions = this.decisions;
-        
-        keys.forEach((index) => { 
-            decisions = decisions[index]; 
+
+        keys.forEach((index) => {
+            decisions = decisions[index];
         });
-    	
+
         this.next(decisions);
     }
 
     /**
      * set the actions for each of the external links
-     * 
+     *
      */
     _setExternalLinks() {
     	let links = document.getElementsByClassName("external");
 
     	Array.from(links).forEach((link) => {
 	    	link.addEventListener("click", (e) => {
-				e.preventDefault();
-
-				this._goExternal(e.target.dataset.route);				
-			});    	
-    	});		    	
+				this._goExternal(e.target.dataset.route, e);
+			});
+    	});
     }
 
     /**
      * execute an external link
-     * 
+     *
      */
-    _goExternal(target) {
+    _goExternal(target, event) {
     	for(let route in this.externals) {
     		if(route === target) {
+    			event.preventDefault();
     			window.location = this.externals[route];
     		}
     	}
+
     }
 }
