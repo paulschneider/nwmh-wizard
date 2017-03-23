@@ -14,7 +14,7 @@ export const Decisions = Object.freeze({
 		excluded: {
 			youth: 'alt-youth',
 			adult: 'alt-adult',
-			senior: 'alt-senior',
+			senior: 'alt-senior'
 		}
 	}
 });

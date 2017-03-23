@@ -180,8 +180,6 @@ export default class App {
 	_makeDetermination(postcode) {
 		let postcodes = this.postcodes[this.selectedAge];
 
-		// console.log(this.postcodes, postcodes, this.selectedAge);
-
 		return postcodes.includes(parseInt(postcode)) ? "included": "excluded";
 	}
 

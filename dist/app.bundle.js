@@ -308,8 +308,6 @@
 			value: function _makeDetermination(postcode) {
 				var postcodes = this.postcodes[this.selectedAge];
 
-				console.log(this.postcodes, postcodes, this.selectedAge);
-
 				return postcodes.includes(parseInt(postcode)) ? "included" : "excluded";
 			}
 
@@ -436,11 +434,13 @@
 		"urgent-contact": "urgent-contact",
 		"service-usage": "service-use",
 		"postcode": "postcode-entry",
-		"similar-youth-organisations": "similar-youth-organisations",
-		"similar-adult-organisations": "similar-adult-organisations",
 		"youth": "youth",
 		"adult": "adult",
-		"minors": "minors"
+		"minors": "minors",
+		"senior": "senior",
+		"alt-youth": "alt-youth",
+		"alt-adult": "alt-adult",
+		"alt-senior": "alt-senior"
 	});
 
 /***/ },
