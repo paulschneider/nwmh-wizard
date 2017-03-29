@@ -83,7 +83,7 @@
 	var App = function () {
 		/**
 	  * class constructor
-	  * 
+	  *
 	  */
 		function App(postcodes, externalPaths) {
 			_classCallCheck(this, App);
@@ -98,7 +98,7 @@
 
 		/**
 	  * initialise the app
-	  * 
+	  *
 	  */
 
 
@@ -116,7 +116,7 @@
 
 			/**
 	   * navigate to the next page
-	   *	 
+	   *
 	   */
 
 		}, {
@@ -131,7 +131,7 @@
 			}
 			/**
 	   * navigate to the previous page
-	   *	 
+	   *
 	   */
 
 		}, {
@@ -148,7 +148,7 @@
 
 			/**
 	   * display the page
-	   *	 
+	   *
 	   */
 
 		}, {
@@ -174,7 +174,7 @@
 
 			/**
 	   * initialise all of the back buttons on the app
-	   * 
+	   *
 	   */
 
 		}, {
@@ -193,7 +193,7 @@
 
 			/**
 	   * set the event listeners for the navigation links buttons
-	   * 
+	   *
 	   */
 
 		}, {
@@ -215,7 +215,7 @@
 
 			/**
 	   * set the event listeners for the age selection buttons
-	   * 
+	   *
 	   */
 
 		}, {
@@ -236,7 +236,7 @@
 
 			/**
 	   * set the age value against the class
-	   * 
+	   *
 	   */
 
 		}, {
@@ -259,12 +259,12 @@
 		}, {
 			key: "_isMinor",
 			value: function _isMinor(age) {
-				return age === "under_15";
+				return age === "minors";
 			}
 
 			/**
 	   * add the event listener to the postcode button
-	   * 
+	   *
 	   */
 
 		}, {
@@ -281,7 +281,7 @@
 
 			/**
 	   * the user added a postcode
-	   * 
+	   *
 	   */
 
 		}, {
@@ -300,7 +300,7 @@
 
 			/**
 	   * make a postcode determination
-	   * 
+	   *
 	   */
 
 		}, {
@@ -334,7 +334,7 @@
 
 			/**
 	   * set the actions for each of the external links
-	   * 
+	   *
 	   */
 
 		}, {
@@ -346,23 +346,22 @@
 
 				Array.from(links).forEach(function (link) {
 					link.addEventListener("click", function (e) {
-						e.preventDefault();
-
-						_this5._goExternal(e.target.dataset.route);
+						_this5._goExternal(e.target.dataset.route, e);
 					});
 				});
 			}
 
 			/**
 	   * execute an external link
-	   * 
+	   *
 	   */
 
 		}, {
 			key: "_goExternal",
-			value: function _goExternal(target) {
+			value: function _goExternal(target, event) {
 				for (var route in this.externals) {
 					if (route === target) {
+						event.preventDefault();
 						window.location = this.externals[route];
 					}
 				}
@@ -435,11 +434,13 @@
 		"urgent-contact": "urgent-contact",
 		"service-usage": "service-use",
 		"postcode": "postcode-entry",
-		"similar-youth-organisations": "similar-youth-organisations",
-		"similar-adult-organisations": "similar-adult-organisations",
 		"youth": "youth",
 		"adult": "adult",
-		"minors": "minors"
+		"minors": "minors",
+		"senior": "senior",
+		"alt-youth": "alt-youth",
+		"alt-adult": "alt-adult",
+		"alt-senior": "alt-senior"
 	});
 
 /***/ },
@@ -453,18 +454,21 @@
 	});
 	var Decisions = exports.Decisions = Object.freeze({
 		age: {
-			under_15: 'minors',
-			under_24: 'postcode-entry',
-			over_24: 'postcode-entry'
+			minors: 'minors',
+			youth: 'postcode-entry',
+			adult: 'postcode-entry',
+			senior: 'postcode-entry'
 		},
 		postcode: {
 			included: {
-				under_24: 'youth',
-				over_24: 'adult'
+				youth: 'youth',
+				adult: 'adult',
+				senior: 'senior'
 			},
 			excluded: {
-				under_24: 'similar-youth-organisations',
-				over_24: 'similar-adult-organisations'
+				youth: 'alt-youth',
+				adult: 'alt-adult',
+				senior: 'alt-senior'
 			}
 		}
 	});
