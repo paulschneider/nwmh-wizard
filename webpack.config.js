@@ -2,7 +2,7 @@ var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
 
 module.exports = {
     // where is the entry point to our app
-	entry: ['core-js/fn/promise', './src/app.js'],
+	entry: ['./src/app.js'],
     output: {
         // where are the files we want to compile
          path: './dist',
