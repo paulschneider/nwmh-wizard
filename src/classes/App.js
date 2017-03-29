@@ -117,7 +117,7 @@ export default class App {
 		for(let i = 0; i < buttons.length; i++) {
 			buttons[i].addEventListener("click", (e) => {
 				e.preventDefault();
-				let age = e.target.getAttribute('age');
+				let age = e.target.getAttribute('data-age');
 				this._setAge(age);
 			});
 		};
@@ -206,7 +206,7 @@ export default class App {
 
     	Array.from(links).forEach((link) => {
 	    	link.addEventListener("click", (e) => {
-				this._goExternal(e.target.getAttribute('route'), e);
+				this._goExternal(e.target.getAttribute('data-route'), e);
 			});
     	});
     }
