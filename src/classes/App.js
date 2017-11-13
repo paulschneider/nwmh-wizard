@@ -62,6 +62,8 @@ export default class App {
 	 */
 	_show(section) {
 		document.querySelector("#" + section).classList.add("active");
+		var event = new CustomEvent('wizard-show', { section: section });
+		document.dispatchEvent(event);
 	}
 
 	/**
