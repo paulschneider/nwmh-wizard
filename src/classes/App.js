@@ -28,7 +28,11 @@ export default class App {
 		this._setExternalLinks();
 
 		this.pages.push("index");
-		this._emit_show('index');
+
+		setTimeout(() => {
+			let event = new CustomEvent('wizard-open', { detail: { section: 'index' }});
+			document.dispatchEvent(event);
+		}, 500);
 	}
 
 	/**
@@ -63,7 +67,7 @@ export default class App {
 	 */
 	_show(section) {
 		document.querySelector("#" + section).classList.add("active");
-		this._emit_show(section);
+		this._showEvent(section);
 	}
 
 
@@ -71,8 +75,8 @@ export default class App {
 	 * emit change event
 	 *
 	 */
-	_emit_show(section) {
-		var event = new CustomEvent('wizard-show', { detail: { section: section }});
+	_showEvent(section) {
+		let event = new CustomEvent('wizard-show', { detail: { section: section }});
 		document.dispatchEvent(event);
 	}
 
