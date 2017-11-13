@@ -28,6 +28,7 @@ export default class App {
 		this._setExternalLinks();
 
 		this.pages.push("index");
+		this._emit_show('index');
 	}
 
 	/**
@@ -62,6 +63,15 @@ export default class App {
 	 */
 	_show(section) {
 		document.querySelector("#" + section).classList.add("active");
+		this._emit_show(section);
+	}
+
+
+	/**
+	 * emit change event
+	 *
+	 */
+	_emit_show(section) {
 		var event = new CustomEvent('wizard-show', { detail: { section: section }});
 		document.dispatchEvent(event);
 	}

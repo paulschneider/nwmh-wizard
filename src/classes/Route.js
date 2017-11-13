@@ -3,7 +3,7 @@ import {Routes} from "../config/Routes";
 export default class Route {
 	/**
 	 * class constructor
-	 * 
+	 *
 	 */
 	constructor() {
 		this.routes = Routes;
